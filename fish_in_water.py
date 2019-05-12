@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 class Point:
@@ -51,7 +51,8 @@ def find_bias(slope, p: Point):
 
 def main(water_n=1.33, air_n=1, eye_x=0, eye_y=12, fish_x=-50, fish_y=-30):
 	# perform the calculation
-	a, b, x_inter, weight, bias, fish_loc = detect(environment=Environment(water_n=water_n, air_n=air_n), eye=Point(x=eye_x, y=eye_y), fish_image=Point(x=fish_x, y=fish_y))
+	a, b, x_inter, weight, bias, fish_loc = detect(environment=Environment(water_n=water_n, air_n=air_n),
+	                                               eye=Point(x=eye_x, y=eye_y), fish_image=Point(x=fish_x, y=fish_y))
 	
 	# set the axes to the middle
 	ax = plt.gca()
@@ -69,19 +70,26 @@ def main(water_n=1.33, air_n=1, eye_x=0, eye_y=12, fish_x=-50, fish_y=-30):
 	
 	# annotate key data
 	# eye
-	plt.annotate("eye ({}, {})".format(eye_x, eye_y), xy=(eye_x, eye_y), xycoords="data", xytext=(20, 30), textcoords="offset points", fontsize=10, arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+	plt.annotate("eye ({}, {})".format(eye_x, eye_y), xy=(eye_x, eye_y), xycoords="data", xytext=(20, 30),
+	             textcoords="offset points", fontsize=10,
+	             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 	plt.scatter(eye_x, eye_y, 30, color="blue")
 	
 	# fish image
-	plt.annotate("fish image ({}, {})".format(fish_x, fish_y), xy=(fish_x, fish_y), xycoords="data", xytext=(-55, 20), textcoords="offset points", fontsize=10, arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+	plt.annotate("fish image ({}, {})".format(fish_x, fish_y), xy=(fish_x, fish_y), xycoords="data", xytext=(-55, 20),
+	             textcoords="offset points", fontsize=10,
+	             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 	plt.scatter(fish_x, fish_y, 30, color="blue")
 	
 	# actual fish
-	plt.annotate("fish ({}, {})".format(fish_loc.x, fish_loc.y), xy=(fish_loc.x, fish_loc.y), xycoords="data", xytext=(-40, 20), textcoords="offset points", fontsize=10, arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+	plt.annotate("fish ({}, {})".format(fish_loc.x, fish_loc.y), xy=(fish_loc.x, fish_loc.y), xycoords="data",
+	             xytext=(-40, 20), textcoords="offset points", fontsize=10,
+	             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 	plt.scatter(fish_loc.x, fish_loc.y, 30, color="blue")
 	
 	# refraction point
-	plt.annotate("refraction point", xy=(x_inter, 0), xycoords="data", xytext=(-100, 30), textcoords="offset points", fontsize=10, arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+	plt.annotate("refraction point", xy=(x_inter, 0), xycoords="data", xytext=(-100, 30), textcoords="offset points",
+	             fontsize=10, arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 	plt.scatter(x_inter, 0, 30, color="red")
 	
 	# n values
